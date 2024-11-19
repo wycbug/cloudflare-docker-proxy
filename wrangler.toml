@@ -1,4 +1,4 @@
-name = "cloudflare-docker-proxy"
+name = "docker-proxy"
 compatibility_date = "2023-12-01"
 
 [dev]
@@ -6,27 +6,24 @@ ip = "0.0.0.0"
 port = 8787
 local_protocol = "http"
 
-[observability.logs]
-enabled = true
-
 [env.vars]
-CUSTOM_DOMAIN = "libcuda.so"
+CUSTOM_DOMAIN = "wycbug.xyz"
 
 [env.dev.vars]
 MODE = "debug"
 TARGET_UPSTREAM = "https://registry-1.docker.io"
 
 [env.production]
-name = "cloudflare-docker-proxy"
-# routes = [
-#   { pattern = "docker.libcuda.so", custom_domain = true },
-#   { pattern = "quay.libcuda.so", custom_domain = true },
-#   { pattern = "gcr.libcuda.so", custom_domain = true },
-#   { pattern = "k8s-gcr.libcuda.so", custom_domain = true },
-#   { pattern = "k8s.libcuda.so", custom_domain = true },
-#   { pattern = "ghcr.libcuda.so", custom_domain = true },
-#   { pattern = "cloudsmith.libcuda.so", custom_domain = true },
-# ]
+name = "docker-proxy"
+routes = [
+  { pattern = "docker.wycbug.xyz", custom_domain = true },
+  { pattern = "quay.wycbug.xyz", custom_domain = true },
+  { pattern = "gcr.wycbug.xyz", custom_domain = true },
+  { pattern = "k8s-gcr.wycbug.xyz", custom_domain = true },
+  { pattern = "k8s.wycbug.xyz", custom_domain = true },
+  { pattern = "ghcr.wycbug.xyz", custom_domain = true },
+  { pattern = "cloudsmith.wycbug.xyz", custom_domain = true },
+]
 
 [env.production.vars]
 MODE = "production"
@@ -34,7 +31,7 @@ TARGET_UPSTREAM = ""
 
 [env.staging]
 name = "cloudflare-docker-proxy-staging"
-# route = { pattern = "docker-staging.libcuda.so", custom_domain = true }
+# route = { pattern = "docker-staging.wycbug.xyz", custom_domain = true }
 
 [env.staging.vars]
 MODE = "staging"
